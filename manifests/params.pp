@@ -57,7 +57,7 @@ class lumberjack::params {
 
   # packages
   case $::operatingsystem {
-    'CentOS', 'Fedora', 'Scientific', 'OracleLinux', 'Amazon', 'RedHat': {
+    'CentOS', 'Fedora', 'Scientific', 'OracleLinux', 'Amazon', 'RedHat', 'OEL': {
       # main application
       $package = [ 'lumberjack' ]
     }
