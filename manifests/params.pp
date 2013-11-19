@@ -73,7 +73,7 @@ class lumberjack::params {
 
   # service parameters
   case $::operatingsystem {
-    'CentOS', 'Fedora', 'Scientific', 'OracleLinux', 'Amazon', 'RedHat': {
+    'CentOS', 'Fedora', 'Scientific', 'OracleLinux', 'Amazon', 'RedHat', 'OEL': {
       $service_name       = 'lumberjack'
       $service_hasrestart = true
       $service_hasstatus  = true
