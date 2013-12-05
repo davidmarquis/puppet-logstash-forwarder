@@ -7,6 +7,7 @@ https://github.com/elasticsearch/logstash-forwarder
 This module is based upon https://github.com/electrical/puppet-lumberjack and https://github.com/MixMuffins/puppet-lumberjack
 
 This updated module is in the beta stage and although it is tested, not all scenarios may be covered.
+Tested on CentOS 6.4 using logstash-forwarder 0.3.1
 
 ## Assumptions
 
