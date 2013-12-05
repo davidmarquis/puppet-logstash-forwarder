@@ -1,4 +1,4 @@
-# == Class: lumberjack::params
+# == Class: logstash_fowarder::params
 #
 # This class exists to
 # 1. Declutter the default value assignment for class parameters.
@@ -28,7 +28,7 @@
 # * Richard Pijnenburg <mailto:richard@ispavailability.com>
 # Editor: Ryan O'Keeffe
 
-class lumberjack::params {
+class logstash_fowarder::params {
 
   #### Default values for the parameters of the main module class, init.pp
 
@@ -42,13 +42,13 @@ class lumberjack::params {
   $status = 'enabled'
 
   # Config Directory
-  $configdir = '/etc/lumberjack'
+  $configdir = '/etc/logstash_fowarder'
 
   # Config File
-  $config = 'lumberjack.conf'
+  $config = 'logstash_fowarder.conf'
   
   # Install Directory
-  $installdir = '/opt/lumberjack'
+  $installdir = '/opt/logstash_fowarder'
 
   # Restart service on change
   $restart_on_change = false
@@ -59,11 +59,11 @@ class lumberjack::params {
   case $::operatingsystem {
     'CentOS', 'Fedora', 'Scientific', 'OracleLinux', 'Amazon', 'RedHat', 'OEL': {
       # main application
-      $package = [ 'lumberjack' ]
+      $package = [ 'logstash-fowarder' ]
     }
     'Debian', 'Ubuntu': {
       # main application
-      $package = [ 'lumberjack' ]
+      $package = [ 'logstash-fowarder' ]
     }
     default: {
       fail("\"${module_name}\" provides no package default value
@@ -74,13 +74,13 @@ class lumberjack::params {
   # service parameters
   case $::operatingsystem {
     'CentOS', 'Fedora', 'Scientific', 'OracleLinux', 'Amazon', 'RedHat', 'OEL': {
-      $service_name       = 'lumberjack'
+      $service_name       = 'logstash_fowarder'
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name
     }
     'Debian', 'Ubuntu': {
-      $service_name       = 'lumberjack'
+      $service_name       = 'logstash_fowarder'
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name
