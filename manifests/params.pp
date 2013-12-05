@@ -45,7 +45,7 @@ class logstash_forwarder::params {
   $configdir = '/etc/logstash-forwarder'
 
   # Config File
-  $config = 'logstash_forwarder.conf'
+  $config = 'logstash-forwarder.conf'
   
   # Install Directory
   $installdir = '/opt/logstash-forwarder'
