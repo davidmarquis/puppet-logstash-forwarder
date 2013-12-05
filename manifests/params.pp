@@ -1,4 +1,4 @@
-# == Class: logstash_fowarder::params
+# == Class: logstash_forwarder::params
 #
 # This class exists to
 # 1. Declutter the default value assignment for class parameters.
@@ -28,7 +28,7 @@
 # * Richard Pijnenburg <mailto:richard@ispavailability.com>
 # Editor: Ryan O'Keeffe
 
-class logstash_fowarder::params {
+class logstash_forwarder::params {
 
   #### Default values for the parameters of the main module class, init.pp
 
@@ -42,13 +42,13 @@ class logstash_fowarder::params {
   $status = 'enabled'
 
   # Config Directory
-  $configdir = '/etc/logstash_fowarder'
+  $configdir = '/etc/logstash_forwarder'
 
   # Config File
-  $config = 'logstash_fowarder.conf'
+  $config = 'logstash_forwarder.conf'
   
   # Install Directory
-  $installdir = '/opt/logstash_fowarder'
+  $installdir = '/opt/logstash_forwarder'
 
   # Restart service on change
   $restart_on_change = false
@@ -59,11 +59,11 @@ class logstash_fowarder::params {
   case $::operatingsystem {
     'CentOS', 'Fedora', 'Scientific', 'OracleLinux', 'Amazon', 'RedHat', 'OEL': {
       # main application
-      $package = [ 'logstash-fowarder' ]
+      $package = [ 'logstash-forwarder' ]
     }
     'Debian', 'Ubuntu': {
       # main application
-      $package = [ 'logstash-fowarder' ]
+      $package = [ 'logstash-forwarder' ]
     }
     default: {
       fail("\"${module_name}\" provides no package default value
@@ -74,13 +74,13 @@ class logstash_fowarder::params {
   # service parameters
   case $::operatingsystem {
     'CentOS', 'Fedora', 'Scientific', 'OracleLinux', 'Amazon', 'RedHat', 'OEL': {
-      $service_name       = 'logstash_fowarder'
+      $service_name       = 'logstash_forwarder'
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name
     }
     'Debian', 'Ubuntu': {
-      $service_name       = 'logstash_fowarder'
+      $service_name       = 'logstash_forwarder'
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name

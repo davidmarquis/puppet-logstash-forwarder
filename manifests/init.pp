@@ -1,6 +1,6 @@
-# == Class: logstash_fowarder
+# == Class: logstash_forwarder
 #
-# This class is able to install or remove logstash-fowarder on a node.
+# This class is able to install or remove logstash-forwarder on a node.
 # It manages the status of the related service.
 #
 # [Add description - What does this module do on a node?] FIXME/TODO
@@ -54,11 +54,11 @@
 #
 # [*configdir*]
 #   Path where the configuration files will be placed.
-#   Defaults to <tt>/etc/logstash_fowarder</tt>
+#   Defaults to <tt>/etc/logstash_forwarder</tt>
 #
 # [*config*]
 #   The name of the config file to create
-#   Defaults to <tt>logstash_fowarder.conf</tt>
+#   Defaults to <tt>logstash_forwarder.conf</tt>
 #
 # [*cpuprofile*]
 #   write cpu profile to file
@@ -86,7 +86,7 @@
 #
 #
 #
-# The default values for the parameters are set in logstash_fowarder::params. Have
+# The default values for the parameters are set in logstash_forwarder::params. Have
 # a look at the corresponding <tt>params.pp</tt> manifest file if you need more
 # technical information about them.
 #
@@ -94,15 +94,15 @@
 # === Examples
 #
 # * Installation, make sure service is running and will be started at boot time:
-#     class { 'logstash_fowarder': }
+#     class { 'logstash_forwarder': }
 #
 # * Removal/decommissioning:
-#     class { 'logstash_fowarder':
+#     class { 'logstash_forwarder':
 #       ensure => 'absent',
 #     }
 #
 # * Install everything but disable service(s) afterwards
-#     class { 'logstash_fowarder':
+#     class { 'logstash_forwarder':
 #       status => 'disabled',
 #     }
 #
@@ -113,13 +113,13 @@
 # Editor: Kayla Green <mailto:kaylagreen@gmail.com>
 # Editor: Ryan O'Keeeffe
 
-class logstash_fowarder(
-  $config = $logstash_fowarder::params::config,
-  $configdir = $logstash_fowarder::params::configdir,
-  $ensure            = $logstash_fowarder::params::ensure,
-  $autoupgrade       = $logstash_fowarder::params::autoupgrade,
-  $status            = $logstash_fowarder::params::status,
-  $restart_on_change = $logstash_fowarder::params::restart_on_change,
+class logstash_forwarder(
+  $config = $logstash_forwarder::params::config,
+  $configdir = $logstash_forwarder::params::configdir,
+  $ensure            = $logstash_forwarder::params::ensure,
+  $autoupgrade       = $logstash_forwarder::params::autoupgrade,
+  $status            = $logstash_forwarder::params::status,
+  $restart_on_change = $logstash_forwarder::params::restart_on_change,
   $version           = false,
   $run_as_service     = true,
   $servers,
@@ -130,7 +130,7 @@ class logstash_fowarder(
   $idle_flush_time  = '5s',
   $spool_size       = 1024,
   $log_to_syslog    = false,
-) inherits logstash_fowarder::params {
+) inherits logstash_forwarder::params {
 
   #### Validate parameters
 
@@ -174,41 +174,41 @@ class logstash_fowarder(
 
   #### Manage Actions
   if ($ensure == 'present') {
-        anchor {'logstash_fowarder::begin':
-            before  => Class['logstash_fowarder::config'],
-            notify  => Class['logstash_fowarder::service'],
+        anchor {'logstash_forwarder::begin':
+            before  => Class['logstash_forwarder::config'],
+            notify  => Class['logstash_forwarder::service'],
         }
-        class {'logstash_fowarder::config':
-            notify  => Class['logstash_fowarder::service'],
+        class {'logstash_forwarder::config':
+            notify  => Class['logstash_forwarder::service'],
         }
-        class {'logstash_fowarder::package':
-            require => Class['logstash_fowarder::config'],
-            notify  => Class['logstash_fowarder::service'],
+        class {'logstash_forwarder::package':
+            require => Class['logstash_forwarder::config'],
+            notify  => Class['logstash_forwarder::service'],
         }
-        class {'logstash_fowarder::service':
-            require => Class['logstash_fowarder::config'],
+        class {'logstash_forwarder::service':
+            require => Class['logstash_forwarder::config'],
         }
-        anchor { 'logstash_fowarder::end': 
-            require => Class['logstash_fowarder::service']
+        anchor { 'logstash_forwarder::end':
+            require => Class['logstash_forwarder::service']
         }
   }
   else {
-        anchor { 'logstash_fowarder::begin': 
-            before  => Class['logstash_fowarder::service'],
-            notify  => Class['logstash_fowarder::config'],
+        anchor { 'logstash_forwarder::begin':
+            before  => Class['logstash_forwarder::service'],
+            notify  => Class['logstash_forwarder::config'],
         }
-        class {'logstash_fowarder::service':
-            notify  => Class['logstash_fowarder::package'],
+        class {'logstash_forwarder::service':
+            notify  => Class['logstash_forwarder::package'],
         }
-        class {'logstash_fowarder::package':
-            require => Class['logstash_fowarder::service'],
-            notify  => Class['logstash_fowarder::config'],
+        class {'logstash_forwarder::package':
+            require => Class['logstash_forwarder::service'],
+            notify  => Class['logstash_forwarder::config'],
         }
-        class {'logstash_fowarder::config':
-            require => Class['logstash_fowarder::package'],
+        class {'logstash_forwarder::config':
+            require => Class['logstash_forwarder::package'],
         }
-        anchor {'logstash_fowarder::end': 
-            require => Class['logstash_fowarder::config'],
+        anchor {'logstash_forwarder::end':
+            require => Class['logstash_forwarder::config'],
         }
   }
 }

@@ -1,4 +1,4 @@
-define logstash_fowarder::file (
+define logstash_forwarder::file (
     $paths,
     $fields,
 ){
@@ -15,9 +15,9 @@ define logstash_fowarder::file (
         validate_hash($fields)
     }
  
-    if ($logstash_fowarder::ensure == 'present' ) { 
+    if ($logstash_forwarder::ensure == 'present' ) {
         concat::fragment{"${name}":
-            target  => "${logstash_fowarder::configdir}/${logstash_fowarder::config}",
+            target  => "${logstash_forwarder::configdir}/${logstash_forwarder::config}",
             content => template("${module_name}/file_format.erb"),
             order   => 010,
         }
