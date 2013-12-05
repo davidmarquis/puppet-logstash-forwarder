@@ -42,13 +42,13 @@ class logstash_forwarder::params {
   $status = 'enabled'
 
   # Config Directory
-  $configdir = '/etc/logstash_forwarder'
+  $configdir = '/etc/logstash-forwarder'
 
   # Config File
   $config = 'logstash_forwarder.conf'
   
   # Install Directory
-  $installdir = '/opt/logstash_forwarder'
+  $installdir = '/opt/logstash-forwarder'
 
   # Restart service on change
   $restart_on_change = false
