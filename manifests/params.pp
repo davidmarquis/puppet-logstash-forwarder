@@ -74,13 +74,13 @@ class logstash_forwarder::params {
   # service parameters
   case $::operatingsystem {
     'CentOS', 'Fedora', 'Scientific', 'OracleLinux', 'Amazon', 'RedHat', 'OEL': {
-      $service_name       = 'logstash_forwarder'
+      $service_name       = 'logstash-forwarder'
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name
     }
     'Debian', 'Ubuntu': {
-      $service_name       = 'logstash_forwarder'
+      $service_name       = 'logstash-forwarder'
       $service_hasrestart = true
       $service_hasstatus  = true
       $service_pattern    = $service_name
