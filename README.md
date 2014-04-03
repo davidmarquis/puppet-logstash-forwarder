@@ -49,3 +49,24 @@ To configure file inputs:
 ## Parameters
 
 Default parameters have been set in the params.pp class file.  Options include config file and directory, package name, install dir (used by the service(s), among others.
+
+## Hiera
+
+```
+logstash_forwarder::cpuprofile: '/path/to/write/cpu/profile/to/file'
+logstash_forwarder::log_to_syslog: false
+logstash_forwarder::spool_size: '1024'
+logstash_forwarder::servers: ['listof.hosts:12345', '127.0.0.1:9987']
+logstash_forwarder::ssl_ca_path: '/path/to/ssl/root/certificate'
+
+logstash_forwarder::logstash_files:
+  'localhost-syslog':
+    paths: ['/var/log/messages','/var/log/secure','/var/log/*.log/']
+    fields:
+      type: 'syslog'
+
+  'nginx_accesslog': 
+    paths: ['/var/log/nginx/access.log']
+    filds:
+      type: 'nginx'
+```
