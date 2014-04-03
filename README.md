@@ -43,7 +43,7 @@ To configure file inputs:
 
     logstash_forwarder::file { 'localhost-syslog':
         paths    => ['/var/log/messages','/var/log/secure','/var/log/*.log/'],
-        fields   => { 'type' : 'syslog' }, 
+        fields   => { 'type' => 'syslog' }, 
     }
 
 ## Parameters
