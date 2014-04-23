@@ -63,7 +63,7 @@ class logstash_forwarder::service {
       notify  => $notify_logstash_forwarder
     }
 
-    logrotate::rule { "${log_file}":
+    logrotate::rule { "logstash-forwarder":
       compress     => true,
       copytruncate => true,
       missingok    => true,
