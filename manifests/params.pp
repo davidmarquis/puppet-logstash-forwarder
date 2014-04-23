@@ -53,6 +53,8 @@ class logstash_forwarder::params {
   # Restart service on change
   $restart_on_change = false
 
+  $log_file = '/var/log/logstash-forwarder.log'
+
   #### Internal module values
 
   # packages

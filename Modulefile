@@ -8,3 +8,4 @@ description 'Module for managing and configuring logstash-forwarder, forked from
 project_page 'https://github.com/davidmarquis/puppet-logstash-forwarder'
 dependency 'puppetlabs/stdlib', '>= 3.0.0'
 dependency 'puppetlabs/concat', '>= 1.0.0'
+dependency 'rodjek/logrotate', '>= 1.1.1'

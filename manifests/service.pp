@@ -39,6 +39,7 @@ class logstash_forwarder::service {
   $run_as_service   = $logstash_forwarder::run_as_service          
   $ensure = $logstash_forwarder::ensure  
   $installdir = $logstash_forwarder::installdir
+  $log_file = $logstash_forwarder::params::log_file
 
   validate_bool($run_as_service)
 
@@ -60,6 +61,15 @@ class logstash_forwarder::service {
       mode    => '0755',
       content => template("${module_name}/etc/init.d/logstash-forwarder.erb"),
       notify  => $notify_logstash_forwarder
+    }
+
+    logrotate::rule { "${log_file}":
+      compress     => true,
+      copytruncate => true,
+      missingok    => true,
+      path         => "${log_file}",
+      rotate       => 5,
+      size         => '1M',
     }
 
     #### Service management
