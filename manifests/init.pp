@@ -84,7 +84,9 @@
 # [*ssl_certificate*]
 #   File to use for your host's SSL cert
 #
-#
+# [*logstash_files*]
+#   Hash to create resources logstash_forwarder::file
+#   
 #
 # The default values for the parameters are set in logstash_forwarder::params. Have
 # a look at the corresponding <tt>params.pp</tt> manifest file if you need more
@@ -130,6 +132,7 @@ class logstash_forwarder(
   $idle_flush_time  = '5s',
   $spool_size       = 1024,
   $log_to_syslog    = false,
+  $logstash_files   = {},
 ) inherits logstash_forwarder::params {
 
   #### Validate parameters
@@ -166,6 +169,9 @@ class logstash_forwarder(
 
   # autoupgrade
   validate_bool($autoupgrade)
+
+  validate_hash($logstash_files)
+  create_resources("logstash_forwarder::file",$logstash_files)
 
   # service status
   if ! ($status in [ 'enabled', 'disabled', 'running', 'unmanaged' ]) {
